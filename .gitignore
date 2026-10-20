@@ -1,0 +1,15 @@
+# Dependencies and generated outputs
+node_modules/
+dist/
+build/
+.next/
+coverage/
+.cache/
+# Sensitive local configuration
+.env
+.env.*
+!.env.example
+# Editors / system files
+.DS_Store
+.vscode/
+*.log
