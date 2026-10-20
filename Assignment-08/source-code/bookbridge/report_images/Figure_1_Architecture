@@ -1,0 +1,34 @@
+digraph Architecture {
+	dpi=300 rankdir=LR
+	subgraph cluster_frontend {
+		color=lightgrey label="React.js Frontend
+(Client)" style=filled
+		UI [label="React UI Components
+(Home, Detail, Form)" fillcolor=white shape=box style=filled]
+		Axios [label="API Interceptor
+(Axios)" fillcolor=white shape=box style=filled]
+		Context [label="Auth Context
+(State & LocalStorage)" fillcolor=white shape=box style=filled]
+		UI -> Axios
+		Context -> UI
+	}
+	subgraph cluster_backend {
+		color=lightblue label="Node.js & Express
+(Server)" style=filled
+		API [label="Express Routes
+(/api/auth, /api/books)" fillcolor=white shape=box style=filled]
+		Mid [label="Middleware
+(Multer, JWT Auth)" fillcolor=white shape=box style=filled]
+		Models [label="Mongoose Models
+(User, Book)" fillcolor=white shape=box style=filled]
+		API -> Mid
+		Mid -> Models
+	}
+	subgraph cluster_db {
+		color=lightgreen label="MongoDB
+(Database)" style=filled
+		DB [label="NoSQL Database" fillcolor=white shape=cylinder style=filled]
+	}
+	Axios -> API [label=" REST API (HTTP/JSON)" color=blue]
+	Models -> DB [label=" Mongoose Queries" color=blue]
+}
